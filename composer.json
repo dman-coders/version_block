@@ -1,0 +1,12 @@
+{
+    "name": "dman-coders/version-block",
+    "description": "Display Drupal Version info in a block - utility for info when upgrading a site.",
+    "type": "drupal-module",
+    "keywords": ["Drupal"],
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Dan Morrison"
+        }
+    ],
+}

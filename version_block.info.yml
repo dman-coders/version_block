@@ -1,0 +1,8 @@
+name: Version Block
+type: module
+description: Provides a block that displays the current version of Drupal core and PHP.
+package: Custom
+version: 1.0
+core: 8.x
+dependencies:
+  - block

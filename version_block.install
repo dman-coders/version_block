@@ -1,0 +1,32 @@
+<?php
+
+use Drupal\block\Entity\Block;
+
+/**
+ * Implements hook_enable().
+ *
+ * Auto-place this block when module is enabled
+ */
+function version_block_install() {
+  $theme = \Drupal::config('system.theme')->get('default');
+  // Need to create a block placement instance
+  $block_id = 'version_block_' . $theme;
+  /** @var blockEntityManager $blockEntityManager */
+  $blockEntityManager = \Drupal::service('entity.manager')->getStorage('block');
+  $block = $blockEntityManager->create(
+    array(
+      'id'=> $block_id,
+      'plugin' => 'version_block',
+      'theme' => $theme
+    )
+  );
+  $block->setRegion('highlighted');
+  $block->setWeight(-1);
+  $block->save();
+
+  // Check that enabled.
+  $block = Block::load($block_id);
+  if (! $block) {
+    \Drupal::messenger()->addError('Could not enable block ' . $block_id);
+  }
+}
